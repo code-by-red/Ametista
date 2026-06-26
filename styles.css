@@ -1,0 +1,568 @@
+/* ========================================
+   AMETISTA - TAROT DE LUXO
+   Design Mágico, Místico e de Bruxaria
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark: #0a0a0a;
+    --color-darker: #000000;
+    --color-purple: #9b59b6;
+    --color-purple-dark: #7a3fa0;
+    --color-rose: #d98fb8;
+    --color-rose-light: #e8a5c7;
+    --color-blue: #5b9fb5;
+    --color-blue-light: #7ab8d1;
+    --color-green: #2d8a6f;
+    --color-cyan: #00d4ff;
+    --color-text: #f3f4f6;
+    --color-text-muted: #b0b0b0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #050a15 0%, #0a0515 50%, #000000 100%);
+    color: var(--color-text);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ========================================
+   PARTÍCULAS MÁGICAS
+   ======================================== */
+
+.magic-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(217, 143, 184, 0.8), rgba(155, 89, 182, 0.3));
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(217, 143, 184, 0.6);
+    animation: float-particle 20s infinite;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   CARTAS DE TAROT FLUTUANDO
+   ======================================== */
+
+.floating-cards-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.floating-card {
+    position: absolute;
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.4), rgba(217, 143, 184, 0.3));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217, 143, 184, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(217, 143, 184, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: float-card 12s infinite linear;
+}
+
+@keyframes float-card {
+    0% {
+        transform: translateY(0) rotateZ(0deg) scale(0.8);
+        opacity: 0.2;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) rotateZ(360deg) scale(0.8);
+        opacity: 0.2;
+    }
+}
+
+/* ========================================
+   ORBE MÁGICO (Segue o mouse)
+   ======================================== */
+
+.magic-orb {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.3), rgba(217, 143, 184, 0.1), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(40px);
+    mix-blend-mode: screen;
+}
+
+/* ========================================
+   LUZ MÁGICA (Efeito de glow)
+   ======================================== */
+
+.magic-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.05), transparent 70%);
+}
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.05), transparent);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 11;
+    animation: fade-in-up 1s ease-out;
+}
+
+.mystical-header {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+    color: #d98fb8;
+    text-shadow: 0 0 20px rgba(217, 143, 184, 0.6);
+    animation: fade-in-up 0.8s ease-out;
+    font-weight: 700;
+}
+
+.title {
+    font-size: clamp(3rem, 10vw, 9rem);
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff, #d98fb8, #9b59b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(217, 143, 184, 0.3);
+    animation: glow-text 3s ease-in-out infinite;
+}
+
+@keyframes glow-text {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(217, 143, 184, 0.3), 0 0 40px rgba(155, 89, 182, 0.1);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(217, 143, 184, 0.5), 0 0 60px rgba(155, 89, 182, 0.2);
+    }
+}
+
+.title-underline {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d98fb8, #9b59b6, #5b9fb5, transparent);
+    margin: 1.5rem auto;
+    box-shadow: 0 0 20px rgba(217, 143, 184, 0.5);
+    animation: pulse-line 2s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(217, 143, 184, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(217, 143, 184, 0.8);
+    }
+}
+
+.subtitle {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    animation: fade-in-up 1.2s ease-out;
+    line-height: 1.6;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--color-rose);
+    letter-spacing: 2px;
+    margin-top: 1rem;
+    animation: fade-in-up 1.4s ease-out;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 2px;
+    height: 20px;
+    background: var(--color-rose);
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(217, 143, 184, 0.6);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   ESSENCE SECTION
+   ======================================== */
+
+.essence {
+    padding: 6rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+.essence h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-style: italic;
+    color: var(--color-rose);
+    margin-bottom: 2rem;
+    animation: fade-in 1s ease-out;
+}
+
+.essence-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-style: normal;
+    animation: fade-in 1.2s ease-out;
+    text-align: justify;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   SERVICES SECTION
+   ======================================== */
+
+.services {
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.services h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: 2px;
+    animation: fade-in 1s ease-out;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(217, 143, 184, 0.05));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(217, 143, 184, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37), inset 0 0 20px rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    animation: fade-in 1s ease-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(217, 143, 184, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-15px);
+    background: linear-gradient(135deg, rgba(155, 89, 182, 0.2), rgba(217, 143, 184, 0.1));
+    border-color: rgba(217, 143, 184, 0.4);
+    box-shadow: 0 16px 48px rgba(31, 38, 135, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: float-icon 3s ease-in-out infinite;
+}
+
+@keyframes float-icon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    text-align: justify;
+}
+
+.card-glow {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(217, 143, 184, 0.3), transparent);
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.service-card:hover .card-glow {
+    opacity: 1;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.cta-section {
+    padding: 6rem 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.cta-section h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-style: italic;
+    margin-bottom: 1rem;
+    animation: fade-in 1s ease-out;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    animation: fade-in 1.2s ease-out;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, rgba(217, 143, 184, 0.3), rgba(155, 89, 182, 0.3));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(217, 143, 184, 0.3);
+    border-radius: 50px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 8px 32px rgba(217, 143, 184, 0.2);
+    animation: fade-in 1.4s ease-out;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(217, 143, 184, 0.5), rgba(155, 89, 182, 0.5));
+    box-shadow: 0 16px 48px rgba(217, 143, 184, 0.4);
+}
+
+.cta-button:active {
+    transform: scale(0.98);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+
+.fade-in-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* ========================================
+   EFEITOS DE MAGIA ADICIONAIS
+   ======================================== */
+
+/* Efeito de brilho ao passar o mouse */
+.magic-hover {
+    position: relative;
+}
+
+.magic-hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(217, 143, 184, 0.2), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.magic-hover:hover::after {
+    opacity: 1;
+}
